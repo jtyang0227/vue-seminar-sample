@@ -6,7 +6,7 @@
 
     <h3>3. emit</h3>
     <ul style="background-color: antiquewhite">
-      <li v-for="msg in msgList" :key="msg">{{ msg }}</li>
+      <li v-for="(msg, index) in msgList" :key="index">{{ msg }}</li>
     </ul>
 
     <!-- <하위 컴포넌트 이름 v-bind:프롭스 속성 이름="상위 컴포넌트의 데이터 이름"> </컴포넌트명> -->
@@ -14,7 +14,6 @@
 
     <!-- v-on:하위 이벤트(emit)이름="상위 컴포넌트의 이벤트 이름" -->
     <text-view v-on:emitPass="returnNum">textView</text-view>
-
   </div>
 </template>
 
@@ -26,7 +25,8 @@ import AddressView from "../components/addressView";
 export default {
   components: {
     AddressView,
-    ItemList, textView
+    ItemList,
+    textView,
   },
 
   data() {
@@ -37,17 +37,19 @@ export default {
   },
 
   methods: {
+    // emit callback
     // 하위 컴퍼넌트(ItemList.vue)로 값 추가
     addMessages(payload) {
-      console.log("emit callback");
+      console.log(payload);
       this.msgList.push(payload.message);
     },
 
+    // 컴퍼넌트 통신 textView
     // 하위 컴퍼넌트(contextView)로 전달값 할당
     returnNum(value) {
       console.log("ItemList");
       this.numAdd = value;
     }
-  }
+  },
 };
 </script>

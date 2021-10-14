@@ -16,14 +16,13 @@ export default {
   components: {},
   data() {
     return {
+      // Emit.vue 전달 데이터
       emitData: ""
     };
   },
 
   methods: {
-    /**
-     * return emit event name: message
-     */
+    // emit call
     pushMessages: function() {
       if (undefined === this.emitData || null === this.emitData || "" === this.emitData) {
         alert("값을 입력해주세요.");

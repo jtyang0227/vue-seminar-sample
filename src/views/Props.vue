@@ -1,8 +1,13 @@
 <template>
   <div class="props">
+    <!--
+      <하위 컴포넌트 이름 v-bind:프롭스 속성 이름="상위 컴포넌트의 데이터 이름">
+      </컴포넌트명>
+    -->
     <context-view :props-msg="message"
                   v-bind:component-name="componentName"
-    />
+    >
+    </context-view>
   </div>
 </template>
 
